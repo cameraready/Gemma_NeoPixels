@@ -22,7 +22,7 @@ uint8_t gamma[] PROGMEM = { // Gamma correction table for LED brightness
   215,218,220,223,225,228,231,233,236,239,241,244,247,249,252,255 };
  
 // Removed references to shoes and related code
-#define N_LEDS        8 // TOTAL number of LEDs in strip
+#define N_LEDS        10 // TOTAL number of LEDs in strip
 #define LED_PIN        1 // NeoPixel strip is connected here
  
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
@@ -43,11 +43,13 @@ void loop() {
   mag[0] = 50;
   mag[1] = 100;
   mag[2] = 250;
-  mag[3] = 500;
-  mag[4] = 800;
-  mag[5] = 600;
-  mag[6] = 400;
-  mag[7] = 200;
+  mag[3] = 400;
+  mag[4] = 600;
+  mag[5] = 800;
+  mag[6] = 500;
+  mag[7] = 300;
+  mag[8] = 150;
+  mag[9] = 50;
  
   // Now the grayscale magnitude buffer is remapped to color for the LEDs.
   // The code below uses a blackbody palette, which fades from white to yellow
