@@ -1,10 +1,11 @@
-// Minor edit of the NeoPixel earrings example.
-// Setup for 8 LEDs sewn onto a piece of fabric.
+// Low power NeoPixel earrings example.  Makes a nice blinky display
+// with just a few LEDs on at any time...uses MUCH less juice than
+// rainbow display!
 
 #include <Adafruit_NeoPixel.h>
 
 #define PIN 1
-#define NUMPIX 8
+#define NUMPIX 10
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIX, PIN);
 
