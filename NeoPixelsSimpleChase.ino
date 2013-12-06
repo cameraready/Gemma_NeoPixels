@@ -1,6 +1,4 @@
-// Low power NeoPixel earrings example.  Makes a nice blinky display
-// with just a few LEDs on at any time...uses MUCH less juice than
-// rainbow display!
+// Simple chasing pattern to save battery power.
 
 #include <Adafruit_NeoPixel.h>
 
@@ -9,14 +7,14 @@
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIX, PIN);
 
-uint32_t offset = 0; // Position of spinny eyes
+uint32_t offset = 0; // Position of lit pixels
 uint32_t color  = 0xFF0000; // Start color
 uint32_t prevTime;
 uint8_t  numPixOn = 2;
 
 void setup() {
   pixels.begin();
-  pixels.setBrightness(48); // brightness
+  pixels.setBrightness(51); // 20% max brightness
 }
 
 void loop() {
@@ -25,7 +23,7 @@ void loop() {
  
     for(i=0; i<NUMPIX; i++) {
       uint32_t c = 0;
-      if((((offset + i)%NUMPIX) & 0xF) < numPixOn) c = color; // use variable to set the number of pixels on during cycle
+      if((((offset + i)%NUMPIX) & 0xF) < numPixOn) c = color; // set color for specific pixels
       pixels.setPixelColor( i, c); 
     }
     pixels.show();
@@ -35,7 +33,7 @@ void loop() {
   t = millis();
   if((t - prevTime) > 8000) {    // Every 8 seconds...
     color >>= 8;                 // Next color R->G->B
-    if(!color) color = 0xFF0000; //0xFFAE00; Reset to color
+    if(!color) color = 0xFF0000; //0xFFAE00; Reset to default color
     prevTime = t;
   }
 }
