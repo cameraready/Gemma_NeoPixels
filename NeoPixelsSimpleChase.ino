@@ -9,9 +9,10 @@
 
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIX, PIN);
 
-uint8_t  offset = 0; // Position of spinny eyes
-uint32_t color  = 0xFFAE00; // Start color
+uint32_t offset = 0; // Position of spinny eyes
+uint32_t color  = 0xFF0000; // Start color
 uint32_t prevTime;
+uint8_t  numPixOn = 2;
 
 void setup() {
   pixels.begin();
@@ -21,22 +22,20 @@ void setup() {
 void loop() {
   uint8_t  i;
   uint32_t t;
-  uint8_t  numPixOn = 2;
  
     for(i=0; i<NUMPIX; i++) {
       uint32_t c = 0;
-      if(((offset + i) & 0xF) < numPixOn) c = color; // use variable to set the number of pixels on during cycle
+      if((((offset + i)%NUMPIX) & 0xF) < numPixOn) c = color; // use variable to set the number of pixels on during cycle
       pixels.setPixelColor( i, c); 
     }
     pixels.show();
     offset++;
-    delay(50);
+    delay(75);
     
   t = millis();
-  if((t - prevTime) > 8000) {      // Every 8 seconds...
+  if((t - prevTime) > 8000) {    // Every 8 seconds...
     color >>= 8;                 // Next color R->G->B
-    if(!color) color = 0xFFAE00; //0xFF0000; // Reset to color
-    for(i=0; i<NUMPIX; i++) pixels.setPixelColor(i, 0); // clear all pixels
+    if(!color) color = 0xFF0000; //0xFFAE00; Reset to color
     prevTime = t;
   }
 }
