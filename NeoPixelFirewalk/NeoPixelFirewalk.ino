@@ -3,7 +3,7 @@
  
 #include <Adafruit_NeoPixel.h>
  
-uint8_t gamma[] PROGMEM = { // Gamma correction table for LED brightness
+const uint8_t gamma[] PROGMEM = { // Gamma correction table for LED brightness
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
     0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1,  1,
     1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,
